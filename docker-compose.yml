@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb:latest
+    ports:
+      - 3306:3306
+
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MARIADB_PASSWORD: admin
+      MARIADB_USER: root
+      MARIADB_DATABASE: google_oauth2_app

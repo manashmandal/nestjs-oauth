@@ -26,4 +26,9 @@ export class AuthController {
   handleFacebookRedirect() {
     return { message: 'Facebook Redirect' };
   }
+
+  @Get('test')
+  handleTest() {
+    return { message: 'test endpoint' };
+  }
 }

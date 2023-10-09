@@ -6,15 +6,13 @@ import * as passport from 'passport';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const corsOptions = {
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 200,
-  };
-
+  app.enableCors({
+    allowedHeaders: ['content-type'],
+    origin: ['http://localhost:3001', '0.0.0.0:3001'],
+    credentials: true,
+  });
   // Enable CORS with specific configuration
-  app.enableCors(corsOptions);
+  // app.enableCors({ origin: 'http://0.0.0.0:3001' });
 
   // Set a global API prefix
   app.setGlobalPrefix('api');
