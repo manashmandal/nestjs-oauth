@@ -7,10 +7,28 @@
     <title>Document</title>
   </head>
   <body>
+    <button onclick="handleGoogleLogin">Click here</button>
     <script>
-      fetch('http://localhost:3000/api/auth/test').then((res) =>
-        console.log(res.json()),
-      );
+      async function handleGoogleLogin() {
+        try {
+          const response = await fetch(
+            'http://localhost:3000/auth/google/login',
+            {
+              method: 'GET',
+            },
+          );
+
+          if (response.ok) {
+            // Successful login; redirect to somewhere
+            window.location.href = 'http://localhost:3000/api/auth/test';
+          } else {
+            // Handle login error
+            console.error('Login failed');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      }
     </script>
   </body>
 </html>
